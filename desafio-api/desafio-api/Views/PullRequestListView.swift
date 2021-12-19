@@ -21,7 +21,7 @@ struct PullRequestListView: View {
     var body: some View {
         NavigationView{
             List(self.pullRequestVM.pullRequests,id: \.id){pullVm in
-                
+                NavigationLink(destination: PullRequestPageView(url: pullVm.url)){
                 VStack(alignment: .center,spacing: 10){
                     HStack(alignment: .center){
                     Image("baixo_risco")
@@ -49,12 +49,12 @@ struct PullRequestListView: View {
                         .foregroundColor(.secondary)
                 }
                 .padding(.bottom)
-            }
+                }
             
         .navigationBarTitle(Text("Pull Requests"))
+            }
         }.onAppear{
             self.pullRequestVM.fetchPullRequests(repositoryName: repositoryName, ownerName: ownerName)
-            
         }
     }
 }
@@ -64,11 +64,3 @@ struct PullRequestListView_Previews: PreviewProvider {
         PullRequestListView(repositoryName: "zziz",  ownerName: "pwc")
     }
 }
-
-//NavigationView{
-//    List(self.pullRequestVM.pullRequests,id: \.id){pullVM in
-//
-//        HStack{
-//            Text("\(pullVM.url)")
-//        }
-//    }

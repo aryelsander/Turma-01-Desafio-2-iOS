@@ -32,7 +32,8 @@ extension PullRequest{
     }
 
     private enum PullRequestKeys : String,CodingKey{
-        case url,user,title,body
+        case user,title,body
+        case url = "html_url"
         case ownerName = "login"
         case ownerPictureURL = "avatar_url"
         case date = "created_at"
