@@ -15,7 +15,7 @@ struct RepositoryListView: View {
             List(self.repositoryViewModel.repositories,id: \.id
             ){ reposVM in
                 NavigationLink(destination: PullRequestListView(repositoryName: reposVM.name, ownerName: reposVM.ownerName), label: {
-                    RepositoryViewCell(ownerName: reposVM.ownerName, name: reposVM.name, starCount: reposVM.startCount, forksCount: reposVM.forksCount, description: reposVM.description)
+                    RepositoryViewCell(ownerName: reposVM.ownerName, name: reposVM.name, starCount: reposVM.startCount, forksCount: reposVM.forksCount, description: reposVM.description,ownerPictureURL: reposVM.ownerPictureURL)
                 }).buttonStyle(PlainButtonStyle())
            
                     .onAppear{
@@ -39,6 +39,7 @@ struct RepositoryViewCell : View {
     let starCount : Int
     let forksCount : Int
     let description : String?
+    let ownerPictureURL : String
     var body: some View {
         VStack(spacing:10){
             HStack(spacing: 5){
