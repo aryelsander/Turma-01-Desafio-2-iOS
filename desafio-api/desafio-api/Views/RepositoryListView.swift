@@ -69,8 +69,6 @@ struct RepositoryListView: View {
             .navigationBarTitle(Text("Repositorios Swift"))
             }
         }
-        
-       
     }
 }
 
@@ -79,28 +77,3 @@ struct RepositoryListView_Previews: PreviewProvider {
         RepositoryListView()
     }
 }
-
-
-
-
-//List(self.repositoryViewModel.repositories,id: \.id){reposVM in
-//    HStack{
-//        VStack{
-//            Text("Foto do autor")
-//        }
-//        VStack{
-//            Text("Nome do repositorio")
-//            Text("\(reposVM.name)")
-//        }
-//        VStack{
-//            Text("Numero de Forks")
-//            Text("\(reposVM.forksCount)")
-//
-//        }
-//        VStack{
-//            Text("Numero de Estrelas")
-//            Text("\(reposVM.startCount)")
-//        }
-//        //Text(reposVM.description)
-//    }
-//}
