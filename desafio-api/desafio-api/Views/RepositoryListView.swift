@@ -56,7 +56,7 @@ struct RepositoryListView: View {
                         
                     }
                    
-                Text("Esse é um texto de exemplo que vai funcionar como uma descricao para essa view aqui so pra testar ate quanto essa descricao vai pra poder saber o tamanho maximo dela ")
+                        Text("\(reposVM.description ?? "")")
                             .lineLimit(2)
                             .minimumScaleFactor(0.6)
                             .foregroundColor(.secondary)

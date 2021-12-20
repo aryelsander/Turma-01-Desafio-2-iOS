@@ -9,9 +9,9 @@ import Foundation
 
 struct Repository : Decodable{
     let name : String
-//    let description : String
     let ownerName : String
     let ownerPictureURL : String
+    let desc : String?
     let starsCount : Int
     let forksCount : Int
 
@@ -26,14 +26,14 @@ extension Repository{
         name = try container.decode(String.self, forKey: .name)
         ownerName = try owner.decode(String.self, forKey: .ownerName)
         ownerPictureURL = try owner.decode(String.self, forKey: .ownerPictureURL)
-//        description = try container.decode(String.self, forKey: .desc)
+        desc = try container.decode(String?.self, forKey: .desc)
         starsCount = try container.decode(Int.self, forKey: .starsCount)
         forksCount = try container.decode(Int.self, forKey: .forksCount)
     }
-//
+    
     private enum RepositoryKeys : String,CodingKey{
         case name,owner
-//        case desc = "description"
+        case desc = "description"
         case ownerName = "login"
         case ownerPictureURL = "avatar_url"
         case starsCount = "stargazers_count"

@@ -51,13 +51,15 @@ class RepositoryListViewModel : ObservableObject,RandomAccessCollection{
          currentlyLoading = true
          
         self.cancellable = GithubService().getRepositories(pageNumber: nextPageToLoad).map{repos in
-            repos.map{RepositoryViewModel(name: $0.name,startCount: $0.starsCount,forksCount:$0.forksCount,ownerName: $0.ownerName,ownerPictureURL: $0.ownerPictureURL)}
+            repos.map{RepositoryViewModel(name: $0.name,startCount: $0.starsCount,forksCount:$0.forksCount,ownerName: $0.ownerName,ownerPictureURL: $0.ownerPictureURL,description: $0.desc)}
         }.sink(receiveCompletion: {repo in
             print("Chamou mais Repositorios")
+            print(repo)
             self.nextPageToLoad += 1
             self.currentlyLoading = false
             
         }, receiveValue: {repositoryViewModels in
+            print(repositoryViewModels)
             self.repositories.append(contentsOf: repositoryViewModels)
             self.doneLoading = (repositoryViewModels.count == 0)
         })
@@ -73,5 +75,5 @@ struct RepositoryViewModel : Identifiable{
     let forksCount : Int
     let ownerName : String
     let ownerPictureURL : String
-   // let description : String
+    let description : String?
 }
