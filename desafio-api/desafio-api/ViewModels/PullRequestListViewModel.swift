@@ -13,7 +13,7 @@ class PullRequestListViewModel : ObservableObject{
    @Published var pullRequests = [PullRequestViewModel]()
     let apiSettings = APISettings()
     private var cancellable : AnyCancellable?
-    
+ 
     
     func fetchPullRequests(repositoryName : String,ownerName : String) {
         self.cancellable = GithubService().getPullRequests(repositoryName: repositoryName, ownerName: ownerName).map{repos in

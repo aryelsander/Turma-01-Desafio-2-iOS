@@ -63,10 +63,11 @@ struct RepositoryListView: View {
                     }
                 }).buttonStyle(PlainButtonStyle())
            
-                
+                    .onAppear{
+                        self.repositoryViewModel.fetchRepositories(currentItem: reposVM)
+                }
             .navigationBarTitle(Text("Repositorios Swift"))
             }
-            
         }
         
        
